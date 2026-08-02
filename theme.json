@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "800px",
+      "wideSize": "1200px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "bds-navy", "color": "#0a1628", "name": "Navy" },
+        { "slug": "bds-navy-light", "color": "#132846", "name": "Navy nhạt" },
+        { "slug": "bds-gold", "color": "#c9a227", "name": "Gold" },
+        { "slug": "bds-cream", "color": "#f4efe6", "name": "Kem" },
+        { "slug": "bds-white", "color": "#ffffff", "name": "Trắng" },
+        { "slug": "bds-ink", "color": "#1a1a1a", "name": "Chữ tối" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "heading",
+          "name": "Playfair Display",
+          "fontFamily": "\"Playfair Display\", Georgia, serif"
+        },
+        {
+          "slug": "body",
+          "name": "Inter",
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)"
+    },
+    "color": {
+      "background": "#ffffff",
+      "text": "#1a1a1a"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--heading)"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--bds-navy)"
+        }
+      }
+    }
+  }
+}

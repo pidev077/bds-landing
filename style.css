@@ -1,0 +1,82 @@
+/*
+Theme Name: BDS Landing
+Theme URI: https://example.com
+Author: BDS
+Description: Theme cho trang landing page marketing bat dong san, doc lap voi plugin bds-manager. Noi dung trang landing nhap qua Advanced Custom Fields.
+Requires at least: 6.7
+Tested up to: 7.0
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bds-landing
+*/
+
+body {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--body, sans-serif);
+	color: var(--wp--preset--color--bds-ink, #1a1a1a);
+}
+
+.site-header__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1.5rem 24px;
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.site-header__logo {
+	font-family: var(--wp--preset--font-family--heading, serif);
+	font-size: 1.1rem;
+	text-decoration: none;
+	color: var(--wp--preset--color--bds-navy, #0a1628);
+	margin-right: auto;
+}
+
+.site-header__logo img {
+	max-height: 48px;
+	width: auto;
+	display: block;
+}
+
+.site-header__cta {
+	background: var(--wp--preset--color--bds-gold, #c9a227);
+	color: var(--wp--preset--color--bds-navy, #0a1628);
+	text-decoration: none;
+	padding: 0.6rem 1.4rem;
+	border-radius: 2px;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.site-main {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem 24px 4rem;
+}
+
+.site-footer {
+	background: var(--wp--preset--color--bds-navy, #0a1628);
+	color: #fff;
+	text-align: center;
+	padding: 2rem 24px;
+	font-size: 0.85rem;
+}
+
+.site-footer__contact,
+.site-footer__social {
+	margin: 0 0 0.75rem;
+}
+
+.site-footer__social a {
+	color: var(--wp--preset--color--bds-gold, #c9a227);
+	text-decoration: none;
+	margin: 0 0.5rem;
+}
+
+.site-footer__copyright {
+	color: rgba(255, 255, 255, 0.6);
+	margin: 0;
+}
