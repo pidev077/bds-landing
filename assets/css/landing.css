@@ -558,34 +558,14 @@
 	margin: 0;
 }
 
-/* Menu-driven columns (Appearance > Menus, location "Footer -
-   Cột Dự án/Tiện ích"): each top-level item becomes one column heading,
-   its children render as the link list underneath — no fixed column count. */
-.bds-footer__menu {
-	display: flex;
-	gap: 3rem;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	flex: 2 1 400px;
-}
-
-.bds-footer__menu > li {
+/* "Dự án" / "Tiện ích" columns: each is its own flat menu location
+   (footer_du_an / footer_tien_ich in functions.php) with a hardcoded
+   column title — no parent/child nesting for staff to get wrong. */
+.bds-footer__col {
 	flex: 1 1 0;
 }
 
-.bds-footer__menu > li > a {
-	display: block;
-	color: #fff;
-	font-weight: 700;
-	font-size: 0.8rem;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-	text-decoration: none;
-	margin-bottom: 0.9rem;
-}
-
-.bds-footer__menu .sub-menu {
+.bds-footer__menu-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -594,13 +574,13 @@
 	gap: 0.6rem;
 }
 
-.bds-footer__menu .sub-menu a {
+.bds-footer__menu-list a {
 	color: rgba(255, 255, 255, 0.7);
 	text-decoration: none;
 	font-size: 0.85rem;
 }
 
-.bds-footer__menu .sub-menu a:hover {
+.bds-footer__menu-list a:hover {
 	color: var(--gold);
 }
 

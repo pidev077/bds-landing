@@ -315,25 +315,46 @@ if ( ! $header_cta_label ) {
 			<?php if ( $footer_tagline ) : ?><p class="bds-footer__desc"><?php echo esc_html( $footer_tagline ); ?></p><?php endif; ?>
 		</div>
 
-		<?php if ( has_nav_menu( 'footer_links' ) ) : ?>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'footer_links',
-					'container'      => false,
-					'menu_class'     => 'bds-footer__menu',
-					'depth'          => 2,
-					'fallback_cb'    => false,
-				)
-			);
-			?>
-		<?php elseif ( current_user_can( 'edit_theme_options' ) ) : ?>
-			<p class="bds-footer__hint">
-				<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
-					<?php esc_html_e( 'Chưa có menu cột Dự án/Tiện ích — tạo menu với các mục cha (VD: "Dự án", "Tiện ích") và mục con bên dưới, rồi gán vào vị trí "Footer - Cột Dự án/Tiện ích".', 'bds-landing' ); ?>
-				</a>
-			</p>
-		<?php endif; ?>
+		<?php
+		$footer_menu_columns = array(
+			'footer_du_an'    => __( 'Dự án', 'bds-landing' ),
+			'footer_tien_ich' => __( 'Tiện ích', 'bds-landing' ),
+		);
+		foreach ( $footer_menu_columns as $location => $label ) :
+			if ( has_nav_menu( $location ) ) :
+				?>
+				<div class="bds-footer__col">
+					<p class="bds-footer__col-title"><?php echo esc_html( $label ); ?></p>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => $location,
+							'container'      => false,
+							'menu_class'     => 'bds-footer__menu-list',
+							'depth'          => 1,
+							'fallback_cb'    => false,
+						)
+					);
+					?>
+				</div>
+				<?php
+			elseif ( current_user_can( 'edit_theme_options' ) ) :
+				?>
+				<p class="bds-footer__hint">
+					<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
+						<?php
+						printf(
+							/* translators: %s: menu location label, e.g. "Dự án" */
+							esc_html__( 'Chưa có menu cột "%s" — tạo menu rồi gán vào vị trí tương ứng.', 'bds-landing' ),
+							esc_html( $label )
+						);
+						?>
+					</a>
+				</p>
+				<?php
+			endif;
+		endforeach;
+		?>
 
 		<?php if ( $footer_address || $footer_phone || $footer_email ) : ?>
 			<div class="bds-footer__contact">

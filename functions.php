@@ -23,9 +23,10 @@ function bds_landing_setup(): void {
 
 	register_nav_menus(
 		array(
-			'primary'      => __( 'Menu chính', 'bds-landing' ),
-			'footer_links' => __( 'Footer - Cột Dự án/Tiện ích', 'bds-landing' ),
-			'footer_legal' => __( 'Footer - Pháp lý', 'bds-landing' ),
+			'primary'         => __( 'Menu chính', 'bds-landing' ),
+			'footer_du_an'    => __( 'Footer - Cột Dự án', 'bds-landing' ),
+			'footer_tien_ich' => __( 'Footer - Cột Tiện ích', 'bds-landing' ),
+			'footer_legal'    => __( 'Footer - Pháp lý', 'bds-landing' ),
 		)
 	);
 

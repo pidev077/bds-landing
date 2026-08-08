@@ -3,9 +3,11 @@
  * Classic footer used by index.php/page.php (regular posts/pages).
  *
  * Mirrors the 4-column footer built into page-landing-du-an.php (brand,
- * "Dự án"/"Tiện ích" menu columns, contact column, bottom bar) so regular
- * pages look consistent with project landing pages. Reuses the same
- * footer_links/footer_legal menu locations — staff only maintain one menu.
+ * "Dự án"/"Tiện ích" columns, contact column, bottom bar) so regular pages
+ * look consistent with project landing pages. "Dự án" and "Tiện ích" are
+ * separate flat menu locations (footer_du_an/footer_tien_ich) with a
+ * hardcoded column title each — no parent/child nesting for staff to get
+ * wrong, unlike a single menu split by hierarchy.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,25 +31,46 @@ $tagline   = get_bloginfo( 'description' );
 				<?php endif; ?>
 			</div>
 
-			<?php if ( has_nav_menu( 'footer_links' ) ) : ?>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer_links',
-						'container'      => false,
-						'menu_class'     => 'site-footer__menu',
-						'depth'          => 2,
-						'fallback_cb'    => false,
-					)
-				);
-				?>
-			<?php elseif ( current_user_can( 'edit_theme_options' ) ) : ?>
-				<p class="site-footer__hint">
-					<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
-						<?php esc_html_e( 'Chưa có menu cột Dự án/Tiện ích — tạo menu với các mục cha (VD: "Dự án", "Tiện ích") và mục con bên dưới, rồi gán vào vị trí "Footer - Cột Dự án/Tiện ích".', 'bds-landing' ); ?>
-					</a>
-				</p>
-			<?php endif; ?>
+			<?php
+			$footer_menu_columns = array(
+				'footer_du_an'    => __( 'Dự án', 'bds-landing' ),
+				'footer_tien_ich' => __( 'Tiện ích', 'bds-landing' ),
+			);
+			foreach ( $footer_menu_columns as $location => $label ) :
+				if ( has_nav_menu( $location ) ) :
+					?>
+					<div class="site-footer__col">
+						<p class="site-footer__col-title"><?php echo esc_html( $label ); ?></p>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => $location,
+								'container'      => false,
+								'menu_class'     => 'site-footer__menu-list',
+								'depth'          => 1,
+								'fallback_cb'    => false,
+							)
+						);
+						?>
+					</div>
+					<?php
+				elseif ( current_user_can( 'edit_theme_options' ) ) :
+					?>
+					<p class="site-footer__hint">
+						<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
+							<?php
+							printf(
+								/* translators: %s: menu location label, e.g. "Dự án" */
+								esc_html__( 'Chưa có menu cột "%s" — tạo menu rồi gán vào vị trí tương ứng.', 'bds-landing' ),
+								esc_html( $label )
+							);
+							?>
+						</a>
+					</p>
+					<?php
+				endif;
+			endforeach;
+			?>
 
 			<?php if ( $address || $phone || $email ) : ?>
 				<div class="site-footer__contact">

@@ -101,34 +101,14 @@ body {
 	margin: 0;
 }
 
-/* Menu-driven columns (Appearance > Menus, location "Footer - Cột Dự
-   án/Tiện ích"): each top-level item is a column heading, children render
-   as the link list beneath — column count follows the menu, not a fixed grid. */
-.site-footer__menu {
-	display: flex;
-	gap: 3rem;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	flex: 2 1 400px;
-}
-
-.site-footer__menu > li {
+/* "Dự án" / "Tiện ích" columns: each is its own flat menu location
+   (footer_du_an / footer_tien_ich in functions.php) with a hardcoded
+   column title — no parent/child nesting for staff to get wrong. */
+.site-footer__col {
 	flex: 1 1 0;
 }
 
-.site-footer__menu > li > a {
-	display: block;
-	color: var(--wp--preset--color--bds-gold, #c9a227);
-	font-weight: 700;
-	font-size: 0.75rem;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	text-decoration: none;
-	margin-bottom: 1.1rem;
-}
-
-.site-footer__menu .sub-menu {
+.site-footer__menu-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -137,13 +117,13 @@ body {
 	gap: 0.8rem;
 }
 
-.site-footer__menu .sub-menu a {
+.site-footer__menu-list a {
 	color: rgba(255, 255, 255, 0.75);
 	text-decoration: none;
 	font-size: 0.9rem;
 }
 
-.site-footer__menu .sub-menu a:hover {
+.site-footer__menu-list a:hover {
 	color: #fff;
 }
 
