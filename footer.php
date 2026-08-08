@@ -1,6 +1,11 @@
 <?php
 /**
  * Classic footer used by index.php/page.php (regular posts/pages).
+ *
+ * Mirrors the 4-column footer built into page-landing-du-an.php (brand,
+ * "Dự án"/"Tiện ích" menu columns, contact column, bottom bar) so regular
+ * pages look consistent with project landing pages. Reuses the same
+ * footer_links/footer_legal menu locations — staff only maintain one menu.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -9,38 +14,96 @@ $phone     = get_theme_mod( 'bds_phone' );
 $email     = get_theme_mod( 'bds_email' );
 $address   = get_theme_mod( 'bds_address' );
 $copyright = get_theme_mod( 'bds_footer_copyright' );
-$socials   = array(
-	'facebook' => get_theme_mod( 'bds_social_facebook' ),
-	'zalo'     => get_theme_mod( 'bds_social_zalo' ),
-	'youtube'  => get_theme_mod( 'bds_social_youtube' ),
-);
+$tagline   = get_bloginfo( 'description' );
 ?>
 	<footer class="site-footer">
-		<?php if ( $phone || $email || $address ) : ?>
-			<p class="site-footer__contact">
-				<?php echo esc_html( implode( ' · ', array_filter( array( $address, $phone, $email ) ) ) ); ?>
-			</p>
-		<?php endif; ?>
+		<div class="bds-container site-footer__main">
+			<div class="site-footer__brand">
+				<?php if ( has_custom_logo() ) : ?>
+					<div class="site-footer__logo"><?php the_custom_logo(); ?></div>
+				<?php else : ?>
+					<p class="site-footer__name"><?php bloginfo( 'name' ); ?></p>
+				<?php endif; ?>
+				<?php if ( $tagline ) : ?>
+					<p class="site-footer__desc"><?php echo esc_html( $tagline ); ?></p>
+				<?php endif; ?>
+			</div>
 
-		<?php if ( array_filter( $socials ) ) : ?>
-			<p class="site-footer__social">
-				<?php foreach ( $socials as $network => $url ) : ?>
-					<?php if ( $url ) : ?>
-						<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( ucfirst( $network ) ); ?></a>
+			<?php if ( has_nav_menu( 'footer_links' ) ) : ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'footer_links',
+						'container'      => false,
+						'menu_class'     => 'site-footer__menu',
+						'depth'          => 2,
+						'fallback_cb'    => false,
+					)
+				);
+				?>
+			<?php elseif ( current_user_can( 'edit_theme_options' ) ) : ?>
+				<p class="site-footer__hint">
+					<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
+						<?php esc_html_e( 'Chưa có menu cột Dự án/Tiện ích — tạo menu với các mục cha (VD: "Dự án", "Tiện ích") và mục con bên dưới, rồi gán vào vị trí "Footer - Cột Dự án/Tiện ích".', 'bds-landing' ); ?>
+					</a>
+				</p>
+			<?php endif; ?>
+
+			<?php if ( $address || $phone || $email ) : ?>
+				<div class="site-footer__contact">
+					<p class="site-footer__col-title"><?php esc_html_e( 'Liên hệ', 'bds-landing' ); ?></p>
+					<?php if ( $address ) : ?>
+						<p class="site-footer__contact-item">
+							<span class="site-footer__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.05 7-12a7 7 0 1 0-14 0c0 4.95 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+							<span><?php echo esc_html( $address ); ?></span>
+						</p>
 					<?php endif; ?>
-				<?php endforeach; ?>
-			</p>
-		<?php endif; ?>
+					<?php if ( $phone ) : ?>
+						<p class="site-footer__contact-item">
+							<span class="site-footer__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.5 4h3.2l1.5 4.2-2 1.6a11.2 11.2 0 0 0 5 5l1.6-2 4.2 1.5v3.2c0 1-.8 1.8-1.8 1.7A16.5 16.5 0 0 1 3 5.8C2.9 4.8 3.7 4 4.5 4Z"/></svg></span>
+							<span><?php echo esc_html( $phone ); ?></span>
+						</p>
+					<?php endif; ?>
+					<?php if ( $email ) : ?>
+						<p class="site-footer__contact-item">
+							<span class="site-footer__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></span>
+							<span><?php echo esc_html( $email ); ?></span>
+						</p>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+		</div>
 
-		<p class="site-footer__copyright">
-			<?php
-			if ( $copyright ) {
-				echo esc_html( $copyright );
-			} else {
-				echo esc_html( '© ' . gmdate( 'Y' ) . ' ' . get_bloginfo( 'name' ) );
-			}
-			?>
-		</p>
+		<div class="bds-container site-footer__bottom">
+			<p class="site-footer__copyright">
+				<?php
+				if ( $copyright ) {
+					echo esc_html( $copyright );
+				} else {
+					echo esc_html( '© ' . gmdate( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '. All rights reserved.' );
+				}
+				?>
+			</p>
+			<?php if ( has_nav_menu( 'footer_legal' ) ) : ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'footer_legal',
+						'container'      => false,
+						'menu_class'     => 'site-footer__legal',
+						'depth'          => 1,
+						'fallback_cb'    => false,
+					)
+				);
+				?>
+			<?php elseif ( current_user_can( 'edit_theme_options' ) ) : ?>
+				<p class="site-footer__hint">
+					<a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>">
+						<?php esc_html_e( 'Chưa có menu pháp lý — gán vào vị trí "Footer - Pháp lý".', 'bds-landing' ); ?>
+					</a>
+				</p>
+			<?php endif; ?>
+		</div>
 	</footer>
 	<?php wp_footer(); ?>
 </body>
