@@ -309,9 +309,8 @@ if ( ! $header_cta_label ) {
 		<div class="bds-footer__brand">
 			<?php if ( has_custom_logo() ) : ?>
 				<div class="bds-footer__logo"><?php the_custom_logo(); ?></div>
-			<?php else : ?>
-				<p class="bds-footer__name"><?php bloginfo( 'name' ); ?></p>
 			<?php endif; ?>
+			<p class="bds-footer__name"><?php bloginfo( 'name' ); ?></p>
 			<?php if ( $footer_tagline ) : ?><p class="bds-footer__desc"><?php echo esc_html( $footer_tagline ); ?></p><?php endif; ?>
 		</div>
 

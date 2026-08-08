@@ -23,9 +23,8 @@ $tagline   = get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description
 			<div class="site-footer__brand">
 				<?php if ( has_custom_logo() ) : ?>
 					<div class="site-footer__logo"><?php the_custom_logo(); ?></div>
-				<?php else : ?>
-					<p class="site-footer__name"><?php bloginfo( 'name' ); ?></p>
 				<?php endif; ?>
+				<p class="site-footer__name"><?php bloginfo( 'name' ); ?></p>
 				<?php if ( $tagline ) : ?>
 					<p class="site-footer__desc"><?php echo esc_html( $tagline ); ?></p>
 				<?php endif; ?>
