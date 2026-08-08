@@ -135,5 +135,42 @@ function bds_landing_customize_register( WP_Customize_Manager $wp_customize ): v
 			)
 		);
 	}
+
+	// --- Liên hệ nổi (nút nổi góc màn hình, hiện ở mọi trang) ---------------
+	$wp_customize->add_section(
+		'bds_floating_contact',
+		array(
+			'title'    => __( 'Liên hệ nổi (nút nổi góc màn hình)', 'bds-landing' ),
+			'priority' => 33,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'bds_floating_contact_enable',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'wp_validate_boolean',
+		)
+	);
+	$wp_customize->add_control(
+		'bds_floating_contact_enable',
+		array(
+			'section'     => 'bds_floating_contact',
+			'label'       => __( 'Hiện nút liên hệ nổi', 'bds-landing' ),
+			'description' => __( 'Dùng lại số điện thoại (mục "Thông tin liên hệ chung") và link Zalo (mục "Footer") đã nhập ở trên. Thêm link Messenger bên dưới nếu muốn.', 'bds-landing' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	$wp_customize->add_setting( 'bds_messenger_url', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control(
+		'bds_messenger_url',
+		array(
+			'section'     => 'bds_floating_contact',
+			'label'       => __( 'Link Messenger', 'bds-landing' ),
+			'description' => __( 'Ví dụ: https://m.me/tenfanpage', 'bds-landing' ),
+			'type'        => 'url',
+		)
+	);
 }
 add_action( 'customize_register', 'bds_landing_customize_register' );

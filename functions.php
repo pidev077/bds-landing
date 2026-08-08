@@ -54,6 +54,8 @@ function bds_landing_enqueue_assets(): void {
 		array(),
 		null
 	);
+
+	wp_enqueue_script( 'bds-landing-site', BDS_LANDING_URI . '/assets/js/site.js', array(), BDS_LANDING_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'bds_landing_enqueue_assets' );
 
@@ -115,6 +117,50 @@ function bds_landing_admin_notice_missing_acf(): void {
 	echo '</p></div>';
 }
 add_action( 'admin_notices', 'bds_landing_admin_notice_missing_acf' );
+
+/**
+ * Site-wide floating contact button (phone / Zalo / Messenger).
+ * Hooked to wp_footer so it shows on every page, including the landing
+ * template, which bypasses footer.php entirely.
+ */
+function bds_landing_render_floating_contact(): void {
+	if ( ! get_theme_mod( 'bds_floating_contact_enable', true ) ) {
+		return;
+	}
+
+	$phone     = get_theme_mod( 'bds_phone' );
+	$zalo      = get_theme_mod( 'bds_social_zalo' );
+	$messenger = get_theme_mod( 'bds_messenger_url' );
+
+	if ( ! $phone && ! $zalo && ! $messenger ) {
+		return;
+	}
+	?>
+	<div class="bds-floating-contact">
+		<div class="bds-floating-contact__panel">
+			<?php if ( $messenger ) : ?>
+				<a class="bds-floating-contact__item bds-floating-contact__item--messenger" href="<?php echo esc_url( $messenger ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Messenger">
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.9 1.45 5.49 3.72 7.19V22l3.4-1.87c.91.25 1.87.38 2.88.38 5.52 0 10-4.14 10-9.26S17.52 2 12 2Zm1.02 12.47-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.9-2.72-5.46 5.82Z"/></svg>
+				</a>
+			<?php endif; ?>
+			<?php if ( $zalo ) : ?>
+				<a class="bds-floating-contact__item bds-floating-contact__item--zalo" href="<?php echo esc_url( $zalo ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
+					<span>Zalo</span>
+				</a>
+			<?php endif; ?>
+			<?php if ( $phone ) : ?>
+				<a class="bds-floating-contact__item bds-floating-contact__item--phone" href="<?php echo esc_url( 'tel:' . preg_replace( '/[^0-9+]/', '', $phone ) ); ?>" aria-label="Gọi điện">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 4h3.2l1.5 4.2-2 1.6a11.2 11.2 0 0 0 5 5l1.6-2 4.2 1.5v3.2c0 1-.8 1.8-1.8 1.7A16.5 16.5 0 0 1 3 5.8C2.9 4.8 3.7 4 4.5 4Z"/></svg>
+				</a>
+			<?php endif; ?>
+		</div>
+		<button type="button" class="bds-floating-contact__toggle" aria-label="Liên hệ nhanh" aria-expanded="false">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+		</button>
+	</div>
+	<?php
+}
+add_action( 'wp_footer', 'bds_landing_render_floating_contact' );
 
 require BDS_LANDING_DIR . '/inc/acf-fields.php';
 require BDS_LANDING_DIR . '/inc/customizer.php';

@@ -591,6 +591,15 @@
 	flex: 1 1 220px;
 }
 
+.bds-footer__contact a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.bds-footer__contact a:hover {
+	color: var(--gold);
+}
+
 .bds-footer__col-title {
 	color: #fff;
 	font-weight: 700;

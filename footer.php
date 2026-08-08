@@ -83,13 +83,13 @@ $tagline   = get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description
 					<?php if ( $phone ) : ?>
 						<p class="site-footer__contact-item">
 							<span class="site-footer__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.5 4h3.2l1.5 4.2-2 1.6a11.2 11.2 0 0 0 5 5l1.6-2 4.2 1.5v3.2c0 1-.8 1.8-1.8 1.7A16.5 16.5 0 0 1 3 5.8C2.9 4.8 3.7 4 4.5 4Z"/></svg></span>
-							<span><?php echo esc_html( $phone ); ?></span>
+							<a href="<?php echo esc_url( 'tel:' . preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
 						</p>
 					<?php endif; ?>
 					<?php if ( $email ) : ?>
 						<p class="site-footer__contact-item">
 							<span class="site-footer__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></svg></span>
-							<span><?php echo esc_html( $email ); ?></span>
+							<a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( $email ); ?></a>
 						</p>
 					<?php endif; ?>
 				</div>

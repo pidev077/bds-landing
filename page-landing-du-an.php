@@ -359,8 +359,8 @@ if ( ! $header_cta_label ) {
 			<div class="bds-footer__contact">
 				<p class="bds-footer__col-title">Liên hệ</p>
 				<?php if ( $footer_address ) : ?><p><?php echo esc_html( $footer_address ); ?></p><?php endif; ?>
-				<?php if ( $footer_phone ) : ?><p><?php echo esc_html( $footer_phone ); ?></p><?php endif; ?>
-				<?php if ( $footer_email ) : ?><p><?php echo esc_html( $footer_email ); ?></p><?php endif; ?>
+				<?php if ( $footer_phone ) : ?><p><a href="<?php echo esc_url( 'tel:' . preg_replace( '/[^0-9+]/', '', $footer_phone ) ); ?>"><?php echo esc_html( $footer_phone ); ?></a></p><?php endif; ?>
+				<?php if ( $footer_email ) : ?><p><a href="<?php echo esc_url( 'mailto:' . $footer_email ); ?>"><?php echo esc_html( $footer_email ); ?></a></p><?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</div>
