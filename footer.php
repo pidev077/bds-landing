@@ -16,7 +16,7 @@ $phone     = get_theme_mod( 'bds_phone' );
 $email     = get_theme_mod( 'bds_email' );
 $address   = get_theme_mod( 'bds_address' );
 $copyright = get_theme_mod( 'bds_footer_copyright' );
-$tagline   = get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' );
+$tagline   = get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' ) ?: __( 'Đơn vị phát triển bất động sản uy tín, mang đến những dự án chất lượng, pháp lý minh bạch và dịch vụ tận tâm.', 'bds-landing' );
 ?>
 	<footer class="site-footer">
 		<div class="bds-container site-footer__main">

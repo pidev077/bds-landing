@@ -104,7 +104,7 @@ function bds_landing_customize_register( WP_Customize_Manager $wp_customize ): v
 	$wp_customize->add_setting(
 		'bds_footer_tagline',
 		array(
-			'default'           => __( 'Đơn vị phát triển bất động sản uy tín, mang đến những dự án chất lượng, pháp lý minh bạch và dịch vụ tận tâm.', 'bds-landing' ),
+			'default'           => '',
 			'sanitize_callback' => 'sanitize_textarea_field',
 		)
 	);
@@ -113,7 +113,7 @@ function bds_landing_customize_register( WP_Customize_Manager $wp_customize ): v
 		array(
 			'section'     => 'bds_footer',
 			'label'       => __( 'Mô tả ngắn dưới logo', 'bds-landing' ),
-			'description' => __( 'Hiện dưới logo/tên site trong footer. Trang landing dự án có thể ghi đè bằng field riêng của trang đó.', 'bds-landing' ),
+			'description' => __( 'Hiện dưới logo/tên site trong footer. Để trống sẽ dùng "Tagline" ở Cài đặt > Chung. Trang landing dự án có thể ghi đè bằng field riêng của trang đó.', 'bds-landing' ),
 			'type'        => 'textarea',
 		)
 	);

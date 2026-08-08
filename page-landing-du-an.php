@@ -85,7 +85,7 @@ $cta_footnote          = get_field( 'cta_footnote' );
 $footer_address  = get_field( 'footer_address' ) ?: get_theme_mod( 'bds_address' );
 $footer_phone    = get_field( 'footer_phone' ) ?: get_theme_mod( 'bds_phone' );
 $footer_email    = get_field( 'footer_email' ) ?: get_theme_mod( 'bds_email' );
-$footer_tagline  = get_field( 'footer_tagline' ) ?: ( $hero_description ?: get_theme_mod( 'bds_footer_tagline' ) );
+$footer_tagline  = get_field( 'footer_tagline' ) ?: ( $hero_description ?: ( get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' ) ) );
 
 if ( ! $header_cta_label ) {
 	$header_cta_label = get_theme_mod( 'bds_header_cta_label' );
