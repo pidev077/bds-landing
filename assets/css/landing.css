@@ -42,10 +42,6 @@
 	margin: 0 0 0.75rem;
 }
 
-.bds-eyebrow--light {
-	color: rgba(255, 255, 255, 0.85);
-}
-
 .bds-heading {
 	font-family: var(--font-heading);
 	font-size: 40px;
@@ -65,10 +61,6 @@
 	text-decoration: none;
 	border-radius: 2px;
 	transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.bds-btn:hover {
-	transform: translateY(-2px);
 }
 
 .bds-btn--gold {
@@ -254,7 +246,7 @@
 
 /* Stats */
 .bds-stats {
-	padding: 5rem 0 2rem;
+	padding: 5rem 0 5rem;
 	background: #fff;
 }
 
@@ -278,6 +270,7 @@
 	color: var(--navy);
 	margin: 0;
 	line-height: 1;
+	margin-bottom: 20px;
 }
 
 .bds-stat-card__value sup {
@@ -417,6 +410,7 @@
 .bds-carousel__caption {
 	color: #fff;
 	font-weight: 600;
+	font-size: 25px;
 }
 
 /* Masterplan */
@@ -603,10 +597,6 @@
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 	margin: 0 0 0.9rem !important;
-}
-
-.bds-footer__contact p {
-	line-height: 1.5;
 }
 
 .bds-footer__hint {

@@ -494,7 +494,7 @@ function bds_landing_register_acf_fields(): void {
 					'name'         => 'footer_tagline',
 					'type'         => 'textarea',
 					'rows'         => 2,
-					'instructions' => 'Để trống sẽ dùng lại mô tả ở tab Hero.',
+					'instructions' => 'Để trống sẽ dùng tagline chung của site (Customizer > Cài đặt chung).',
 				),
 			),
 			'location' => array(

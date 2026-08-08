@@ -85,7 +85,7 @@ $cta_footnote          = get_field( 'cta_footnote' );
 $footer_address  = get_field( 'footer_address' ) ?: get_theme_mod( 'bds_address' );
 $footer_phone    = get_field( 'footer_phone' ) ?: get_theme_mod( 'bds_phone' );
 $footer_email    = get_field( 'footer_email' ) ?: get_theme_mod( 'bds_email' );
-$footer_tagline  = get_field( 'footer_tagline' ) ?: ( $hero_description ?: ( get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' ) ) );
+$footer_tagline  = get_field( 'footer_tagline' ) ?: ( get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' ) );
 
 if ( ! $header_cta_label ) {
 	$header_cta_label = get_theme_mod( 'bds_header_cta_label' );
@@ -201,7 +201,7 @@ if ( ! $header_cta_label ) {
 						<?php if ( 'dashicons' === $feature['icon']['type'] ) : ?>
 							<span class="bds-feature__icon dashicons <?php echo esc_attr( $feature['icon']['value'] ); ?>"></span>
 						<?php elseif ( 'media_library' === $feature['icon']['type'] ) : ?>
-							<img class="bds-feature__icon bds-feature__icon--img" src="<?php echo esc_url( wp_get_attachment_url( (int) $feature['icon']['value'] ) ); ?>" alt="">
+							<img class="bds-feature__icon bds-feature__icon--img" src="<?php echo esc_url( $feature['icon']['value']['url'] ?? '' ); ?>" alt="">
 						<?php else : ?>
 							<img class="bds-feature__icon bds-feature__icon--img" src="<?php echo esc_url( $feature['icon']['value'] ); ?>" alt="">
 						<?php endif; ?>
