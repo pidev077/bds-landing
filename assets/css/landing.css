@@ -58,9 +58,9 @@
 .bds-btn {
 	display: inline-block;
 	padding: 0.9rem 2rem;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
-	letter-spacing: 0.12em;
+	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	text-decoration: none;
 	border-radius: 2px;
@@ -335,7 +335,7 @@
 }
 
 .bds-feature__description {
-	font-size: 0.85rem;
+	font-size: 16px;
 	color: #666;
 	line-height: 1.5;
 	margin: 0;
@@ -533,7 +533,7 @@
 	gap: 3rem;
 	flex-wrap: wrap;
 	text-align: left;
-	font-size: 0.85rem;
+	font-size: 16px;
 	color: rgba(255, 255, 255, 0.75);
 }
 
@@ -551,7 +551,7 @@
 }
 .bds-footer__name {
 	font-family: var(--font-heading);
-	font-size: 1.1rem;
+	font-size: 20px;
 	color: #fff;
 	margin: 0 0 0.6rem;
 }
@@ -599,14 +599,14 @@
 .bds-footer__col-title {
 	color: #fff;
 	font-weight: 700;
-	font-size: 24px;
+	font-size: 20px;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
-	margin: 0 0 0.9rem;
+	margin: 0 0 0.9rem !important;
 }
 
 .bds-footer__contact p {
-	margin: 0 0 0.3rem;
+	line-height: 1.5;
 }
 
 .bds-footer__hint {
