@@ -61,12 +61,15 @@ add_action( 'wp_enqueue_scripts', 'bds_landing_enqueue_assets' );
  * regular pages/posts never pay for this page's CSS/JS.
  */
 function bds_landing_enqueue_page_assets(): void {
-	if ( ! is_page_template( 'page-landing-du-an.php' ) ) {
-		return;
+	if ( is_page_template( 'page-landing-du-an.php' ) ) {
+		wp_enqueue_style( 'bds-landing-page', BDS_LANDING_URI . '/assets/css/landing.css', array( 'bds-landing-style' ), BDS_LANDING_VERSION );
+		wp_enqueue_script( 'bds-landing-page', BDS_LANDING_URI . '/assets/js/landing.js', array(), BDS_LANDING_VERSION, true );
 	}
 
-	wp_enqueue_style( 'bds-landing-page', BDS_LANDING_URI . '/assets/css/landing.css', array( 'bds-landing-style' ), BDS_LANDING_VERSION );
-	wp_enqueue_script( 'bds-landing-page', BDS_LANDING_URI . '/assets/js/landing.js', array(), BDS_LANDING_VERSION, true );
+	if ( is_page_template( 'page-danh-sach-du-an.php' ) ) {
+		wp_enqueue_style( 'bds-du-an-list', BDS_LANDING_URI . '/assets/css/du-an-list.css', array( 'bds-landing-style' ), BDS_LANDING_VERSION );
+		wp_enqueue_script( 'bds-du-an-list', BDS_LANDING_URI . '/assets/js/du-an-list.js', array(), BDS_LANDING_VERSION, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'bds_landing_enqueue_page_assets' );
 

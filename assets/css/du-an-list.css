@@ -1,0 +1,222 @@
+/*
+ * Styles for the public "Danh sách dự án" template (page-danh-sach-du-an.php).
+ * Only loaded on that template — see bds_landing_enqueue_page_assets() in functions.php.
+ */
+
+.bds-du-an-list {
+	max-width: 1200px;
+}
+
+.bds-du-an-list__header {
+	margin-bottom: 2rem;
+}
+
+.bds-du-an-list__intro {
+	color: #555;
+	max-width: 700px;
+}
+
+.bds-du-an-list__empty {
+	color: #777;
+	padding: 3rem 0;
+	text-align: center;
+}
+
+.bds-du-an-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1.75rem;
+}
+
+.bds-du-an-card {
+	border: 1px solid #ececec;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+}
+
+.bds-du-an-card__image {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	background: #f4efe6;
+}
+
+.bds-du-an-card__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bds-du-an-card__placeholder {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(135deg, #f4efe6, #e6ddc9);
+}
+
+.bds-du-an-card__badge {
+	position: absolute;
+	bottom: 0.6rem;
+	left: 0.6rem;
+	background: rgba(10, 22, 40, 0.85);
+	color: #fff;
+	font-size: 0.7rem;
+	font-weight: 600;
+	padding: 0.3rem 0.6rem;
+	border-radius: 3px;
+}
+
+.bds-du-an-card__body {
+	padding: 1.1rem 1.2rem 1.3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	flex: 1;
+}
+
+.bds-du-an-card__name {
+	font-family: var(--wp--preset--font-family--heading, Georgia, serif);
+	font-size: 1.15rem;
+	color: var(--wp--preset--color--bds-navy, #0a1628);
+	margin: 0;
+}
+
+.bds-du-an-card__desc {
+	color: #666;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0;
+	flex: 1;
+}
+
+.bds-du-an-card__cta {
+	align-self: flex-start;
+	padding: 0.6rem 1.4rem;
+	font-size: 0.7rem;
+	margin-top: 0.3rem;
+}
+
+/* Detail modal */
+.bds-du-an-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+}
+
+.bds-du-an-modal.is-open {
+	display: flex;
+}
+
+.bds-du-an-modal__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(10, 22, 40, 0.75);
+}
+
+.bds-du-an-modal__panel {
+	position: relative;
+	background: #fff;
+	max-width: 780px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	border-radius: 6px;
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+@media ( min-width: 720px ) {
+	.bds-du-an-modal__panel {
+		grid-template-columns: 1.2fr 1fr;
+	}
+}
+
+.bds-du-an-modal__close {
+	position: absolute;
+	top: 0.6rem;
+	right: 0.8rem;
+	z-index: 1;
+	background: rgba(255, 255, 255, 0.9);
+	border: none;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	font-size: 1.3rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.bds-du-an-modal__gallery {
+	position: relative;
+	background: #f4efe6;
+	aspect-ratio: 4 / 3;
+}
+
+.bds-du-an-modal__gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: none;
+}
+
+.bds-du-an-modal__gallery img.is-active {
+	display: block;
+}
+
+.bds-du-an-modal__nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(255, 255, 255, 0.85);
+	border: none;
+	border-radius: 50%;
+	width: 34px;
+	height: 34px;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+.bds-du-an-modal__nav--prev {
+	left: 0.6rem;
+}
+
+.bds-du-an-modal__nav--next {
+	right: 0.6rem;
+}
+
+.bds-du-an-modal__info {
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.bds-du-an-modal__info h3 {
+	font-family: var(--wp--preset--font-family--heading, Georgia, serif);
+	color: var(--wp--preset--color--bds-navy, #0a1628);
+	margin: 0;
+}
+
+.bds-du-an-modal__info p {
+	color: #555;
+	line-height: 1.6;
+	margin: 0;
+	white-space: pre-line;
+}
+
+.bds-du-an-modal__video {
+	align-self: flex-start;
+	color: var(--wp--preset--color--bds-gold, #c9a227);
+	font-weight: 600;
+	font-size: 0.85rem;
+	text-decoration: none;
+}
+
+.bds-du-an-modal__video[href=""] {
+	display: none;
+}
