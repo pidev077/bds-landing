@@ -674,6 +674,7 @@
 		gap: 0;
 		z-index: 30;
 		opacity: 0;
+		width: 100%;
 		visibility: hidden;
 		transform: translateY(-8px);
 		transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
