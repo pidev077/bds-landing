@@ -36,7 +36,7 @@ body {
 }
 
 .site-header__logo img {
-	max-height: 48px;
+	height: 100px;
 	width: auto;
 	display: block;
 }
@@ -83,7 +83,7 @@ body {
 }
 
 .site-footer__logo img {
-	max-height: 56px;
+	height: 128px;
 	width: auto;
 	margin-bottom: 1rem;
 }
@@ -115,6 +115,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
+}
+
+.site-footer__menu-list li {
+	margin: 0;
 }
 
 .site-footer__menu-list a {
@@ -208,10 +212,6 @@ body {
 	.site-footer__main {
 		flex-direction: column;
 		gap: 2.5rem;
-	}
-
-	.site-footer__menu {
-		gap: 2rem;
 	}
 
 	.site-footer__bottom {

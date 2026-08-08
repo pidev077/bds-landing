@@ -16,7 +16,7 @@ $phone     = get_theme_mod( 'bds_phone' );
 $email     = get_theme_mod( 'bds_email' );
 $address   = get_theme_mod( 'bds_address' );
 $copyright = get_theme_mod( 'bds_footer_copyright' );
-$tagline   = get_bloginfo( 'description' );
+$tagline   = get_theme_mod( 'bds_footer_tagline' ) ?: get_bloginfo( 'description' );
 ?>
 	<footer class="site-footer">
 		<div class="bds-container site-footer__main">

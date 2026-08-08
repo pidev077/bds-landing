@@ -101,6 +101,23 @@ function bds_landing_customize_register( WP_Customize_Manager $wp_customize ): v
 		)
 	);
 
+	$wp_customize->add_setting(
+		'bds_footer_tagline',
+		array(
+			'default'           => __( 'Đơn vị phát triển bất động sản uy tín, mang đến những dự án chất lượng, pháp lý minh bạch và dịch vụ tận tâm.', 'bds-landing' ),
+			'sanitize_callback' => 'sanitize_textarea_field',
+		)
+	);
+	$wp_customize->add_control(
+		'bds_footer_tagline',
+		array(
+			'section'     => 'bds_footer',
+			'label'       => __( 'Mô tả ngắn dưới logo', 'bds-landing' ),
+			'description' => __( 'Hiện dưới logo/tên site trong footer. Trang landing dự án có thể ghi đè bằng field riêng của trang đó.', 'bds-landing' ),
+			'type'        => 'textarea',
+		)
+	);
+
 	foreach (
 		array(
 			'bds_social_facebook' => __( 'Link Facebook', 'bds-landing' ),
