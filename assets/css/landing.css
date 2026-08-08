@@ -46,7 +46,7 @@
 	font-family: var(--font-heading);
 	font-size: 40px;
 	line-height: 1.2;
-	margin: 0 0 1rem;
+	margin: 0 0 2rem;
 	color: var(--navy);
 }
 
@@ -316,8 +316,8 @@
 }
 
 .bds-feature__icon--img {
-	width: 32px;
-	height: 32px;
+	width: 60px;
+	height: 60px;
 }
 
 .bds-feature__title {
@@ -459,7 +459,7 @@
 
 .bds-zone__area,
 .bds-zone__description {
-	font-size: 0.85rem;
+	font-size: 16px;
 	color: #666;
 	margin: 0 0 0.2rem;
 }
@@ -617,7 +617,7 @@
 	gap: 1rem;
 	padding: 1.5rem 24px;
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	font-size: 0.75rem;
+	font-size: 16px;
 	color: rgba(255, 255, 255, 0.5);
 }
 
@@ -644,6 +644,11 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+	.bds-nav__inner {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.bds-nav__links,
 	.bds-nav__cta {
 		display: none;
